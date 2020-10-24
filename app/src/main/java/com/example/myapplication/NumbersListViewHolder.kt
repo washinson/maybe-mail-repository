@@ -13,8 +13,8 @@ class NumbersListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     companion object {
         fun createInstance(context: Context, parent: ViewGroup): NumbersListViewHolder {
             val view = LayoutInflater
-                    .from(context)
-                    .inflate(R.layout.numbers_list_item, parent, false)
+                .from(context)
+                .inflate(R.layout.numbers_list_item, parent, false)
             return NumbersListViewHolder(view)
         }
     }

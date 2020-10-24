@@ -24,7 +24,11 @@ class FirstFragment : Fragment() {
         initAdapter(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.first_fragment_view, container, false)
     }
 
@@ -67,6 +71,12 @@ class FirstFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt(ARRAY_COUNT_KEY, numberListAdapter.itemCount)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        numberListAdapter.setOnClickListener(null)
     }
 
     companion object {

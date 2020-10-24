@@ -23,12 +23,12 @@ class NumbersListAdapter(
     }
 
     override fun onBindViewHolder(holder: NumbersListViewHolder, position: Int) {
-        val textColor = if (position % 2 == 0) {
-            Color.RED
-        } else {
-            Color.BLUE
-        }
         val value = position + 1
+        val textColor = if (value.isOdd()) {
+            Color.BLUE
+        } else {
+            Color.RED
+        }
         holder.numTextView.run {
             text = value.toString()
             setTextColor(textColor)

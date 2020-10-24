@@ -17,15 +17,19 @@ class SecondFragment : Fragment() {
         restoreNum(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.second_fragment_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val color = if (num % 2 == 0) {
-            Color.RED
-        } else {
+        val color = if (num.isOdd()) {
             Color.BLUE
+        } else {
+            Color.RED
         }
 
         numTextView = view.findViewById(R.id.num_text_view)
@@ -36,12 +40,14 @@ class SecondFragment : Fragment() {
     }
 
     private fun restoreNum(savedInstanceState: Bundle?) {
-        val argumentsNum = arguments?.getInt(NUMBER_KEY, DEFAULT_NUMBER_VALUE) ?: DEFAULT_NUMBER_VALUE
+        val argumentsNum = arguments?.getInt(NUMBER_KEY, DEFAULT_NUMBER_VALUE)
+            ?: DEFAULT_NUMBER_VALUE
         num = savedInstanceState?.getInt(NUMBER_KEY, argumentsNum) ?: argumentsNum
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt(NUMBER_KEY, num)
+        super.onSaveInstanceState(outState)
     }
 
     companion object {
